@@ -22,7 +22,7 @@ public class InstrumentServiceImpl implements InstrumentService {
 
     @Override
     public List<Instrument> fetchInstrumentList() {
-        return (List<Instrument>) instrumentRepository.findAll();
+        return instrumentRepository.findAll();
     }
 
     @Override
