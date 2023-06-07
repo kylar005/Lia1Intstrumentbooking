@@ -1,48 +1,76 @@
 package Entites;
 import jakarta.persistence.*;
-import javax.annotation.processing.Generated;
+
+import java.util.List;
+
 @Entity
 public class Instrument {
     @Id
     @GeneratedValue(strategy  = GenerationType.IDENTITY)
-    @Column(name = "instruID", nullable = false)
-    private int instruID;
+    @Column(name = "instrumentId", nullable = false)
+    private int instrumentId;
 
-    @Column (name = "instruName", length = 25, nullable = false)
-    private String instruName;
+    //Ex. Gibson Les Paul
+    @Column (name = "instrumentName", length = 25, nullable = false)
+    private String instrumentName;
 
-    @Column(name = "amount", nullable = false)
-    private int amount;
+//Ex. Elgitarr, akustisk gitarr eller bas
+    @Column(name = "instrument_type")
+    private String type;
+
+//Ex. Stränginstrument eller slaginstrument
+    @Column(name = "instrument_category")
+    private String category;
+
+    @OneToMany(mappedBy = "instrument")
+    List <Rental> rentals;
 
 
     public Instrument(){
 
     }
 
-    public Instrument(int instruID, String instruName, int amount){
-        this.instruID = instruID;
-        this.instruName = instruName;
-        this.amount = amount;
+    public Instrument(String instrumentName, String type, String category){
+        this.instrumentName = instrumentName;
+        this.type = type;
+        this.category = category;
     }
 
-    public int getInstruID(){
-        return instruID;
+    public int getInstrumentId(){
+        return instrumentId;
     }
-    public void setInstruID(int id){
-        this.instruID = id;
-    }
-
-    public String getInstruName(){
-        return instruName;
-    }
-    public void setInstruName(String name){
-        this.instruName = name;
+    public void setInstrumentId(int id){
+        this.instrumentId = id;
     }
 
-    public int getAmount(){
-        return amount;
+    public String getInstrumentName(){
+        return instrumentName;
     }
-    public void setAmount(int amount){
-        this.amount = amount;
+    public void setInstrumentName(String name){
+        this.instrumentName = name;
     }
+
+    public String getType() {
+        return type;
+    }
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public List<Rental> getRentals() {
+        return rentals;
+    }
+
+    public void setRentals(List<Rental> rentals) {
+        this.rentals = rentals;
+    }
+
+
 }
