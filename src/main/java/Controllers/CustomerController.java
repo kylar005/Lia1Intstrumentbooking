@@ -19,7 +19,7 @@ public class CustomerController {
     }
 
     // Get all customers
-    @GetMapping
+    @GetMapping (name = "/customers")
     public List<Customer> GetAllCustomer() {
 
         return crudCustomer.getAllCustomer();

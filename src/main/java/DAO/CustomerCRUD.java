@@ -1,7 +1,7 @@
 package DAO;
 
 import Entites.Customer;
-import DAO.CustomerRepository;
+import repository.CustomerRepository;
 import jakarta.persistence.EntityNotFoundException;
 
 import java.util.List;
